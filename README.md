@@ -38,8 +38,11 @@ TODO: Add how to set up Arduino upload.
 If you don't have an Arduino board, you will need a programmer. Configure Atmel Studio according to the type of programmer you have, and upload the code.
 
 ## Download and Tools
+
+### Code
 The code can be downloaded from [some future link]().
 
+### Tools
 **[Arduino IDE]()**
 
 **[Atmel Studio]()**
