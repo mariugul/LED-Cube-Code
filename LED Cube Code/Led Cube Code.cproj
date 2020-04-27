@@ -13,7 +13,7 @@
     <OutputFileExtension>.elf</OutputFileExtension>
     <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
     <AssemblyName>ArduinoUNO</AssemblyName>
-    <Name>ArduinoUNO</Name>
+    <Name>LED Cube Code</Name>
     <RootNamespace>ArduinoUNO</RootNamespace>
     <ToolchainFlavour>Native</ToolchainFlavour>
     <KeepTimersRunning>true</KeepTimersRunning>
