@@ -1,5 +1,7 @@
 # LED Cube Code for Arduino or Standalone Atmega328 (*Under Contruction)
-[![License badge](https://img.shields.io/hexpm/l/repo_example.svg)](https://github.com/TTK4145-students-2020/Project15/blob/master/LICENSE.MD)
+[![License badge](https://img.shields.io/github/license/mariugul/LED-Cube-Code)]()
+
+
 
 This project contains the code for a LED cube, using an Arduino board or the Atmega328 as a standalone with Atmel Studio. It's the code supporting the graphical programming tool [LED Cube Code Generator 3D](https://github.com/mariugul/LED-Cube-Code-Generator-3D). Supporting video tutorials found at [YouTube]().
 
