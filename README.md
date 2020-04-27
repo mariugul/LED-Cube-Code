@@ -15,7 +15,7 @@ When programming Arduino, to control the Input/Output (IO) pins, one uses `digit
 
 For the reasons above and because the sole purpose of a LED cube is to quickly turn IO pins on/off, the Arduino framework was not used, in order to produce a more efficient and accurate LED cube.
 
-## Arduino <img src="images/arduino.png" alt="" width="40"/>
+## Arduino <img src="https://library.kissclipart.com/20181207/ejq/kissclipart-arduino-logo-png-clipart-arduino-starter-kit-k0000-71cedd3a2fcbfa0f.jpg" alt="" width="30"/>
 Do you wish to use the Arudino IDE and not Atmel Studio? Read on.
 
 #### Development Board
@@ -27,7 +27,7 @@ The Arduino board has another advantage, the Atmega328 on it comes with a bootlo
 #### Arduino IDE
 So what about the Arduino IDE? The cool thing about the bootloader and the IDE is that they are developed to work together. Just open the project in the IDE and flash the code, it's _that_ simple.
 
-## Atmel Studio <img src="images/atmel.png" alt="" width="40"/>
+## Atmel Studio <img src="https://www.it.unlv.edu/sites/default/files/styles/250_width/public/sites/default/files/assets/software/icons/atmel_studio.png?itok=Y_BrK5R2" alt="" width="30"/>
 Do you wish to use Atmel Studio with or without an Arduino board? Read on.
 
 #### Arduino Board
