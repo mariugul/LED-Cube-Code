@@ -27,7 +27,7 @@ The Arduino board has another advantage, the Atmega328 on it comes with a bootlo
 #### Arduino IDE
 So what about the Arduino IDE? The cool thing about the bootloader and the IDE is that they are developed to work together. Just open the project in the IDE and flash the code, it's _that_ simple.
 
-## Atmel Studio
+## Atmel Studio <img src="images/atmel.png" alt="" width="40"/>
 Do you wish to use Atmel Studio with or without an Arduino board? Read on.
 
 #### Arduino Board
