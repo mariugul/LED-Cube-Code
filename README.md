@@ -46,7 +46,7 @@ If you don't have an Arduino board, you will need a programmer. Configure Atmel 
 The code can be downloaded from [some future link]().
 
 ## Code Details
-How does the code work? If you are interested in how the code actually works, read on. If you don't care, it's still gonna work :)
+How does the code work? If you are interested in how the code actually works, read on. If you don't care, skip this section.
 
 #### Modules
 These are the files in this project.
