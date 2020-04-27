@@ -15,8 +15,9 @@ When programming Arduino, to control the Input/Output (IO) pins, one uses `digit
 
 For the reasons above and because the sole purpose of a LED cube is to quickly turn IO pins on/off, the Arduino framework was not used, in order to produce a more efficient and accurate LED cube.
 
-## Arduino [](images/arduino.png)
+## Arduino <img src="images/arduino.png" alt="" width="40"/>
 Do you wish to use the Arudino IDE and not Atmel Studio? Read on.
+
 #### Development Board
 There will be no actual "Arduino Code" written. Keep in mind that "Arduino Code" is merely C++, with Arduino's functions from the class that the Arduino creators developed. Most of the code that you write on an Arduino is usually merely C code anyway, so there isn't a huge difference. If you plan to use your Arduino board, look at this board as a development board for the Atmega328. This board has a crystal (clock), USB port and a programmer, among other things. So in the case you were to buy a standalone Atmega328, you would have to buy all these parts and connect them somehow, but you don't need that!
 
