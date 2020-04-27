@@ -61,7 +61,7 @@ This project is licensed under the MIT license and is open source. You are free 
 If you want to contribute that's great! Send a pull request and I will review it.
 
 ## Previous Version
-The first version of the LED cube code was written entirely on Arduino. This code uses lots of nested `for()` and `while()` loops and `delay()`. It's simple and it does work. The code, corresponding code generator and instructions can be found at [Instructables](https://www.instructables.com/id/LED-CUBE-CODE-4x4x4-Arduino/). Who wrote the Arduino code is not known to me, however I made the code generator application.
+The first version of the LED cube code was written entirely on Arduino. This code uses lots of nested `for()` and `while()` loops and `delay()`. It's simple and it works. The code, corresponding code generator and instructions can be found at [Instructables](https://www.instructables.com/id/LED-CUBE-CODE-4x4x4-Arduino/) <img src="https://logodix.com/logo/1584749.png" alt="" width="20"/>. Who wrote the Arduino code is not known to me, however I made the code generator application.    
 
 ## Authors
 Marius C. K. Gulbrandsen
