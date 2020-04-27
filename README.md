@@ -5,7 +5,7 @@
 
 
 
-This project contains the code for a LED cube, using an Arduino board or the Atmega328 as a standalone with Atmel Studio. It's the code supporting the graphical programming tool [LED Cube Code Generator 3D](https://github.com/mariugul/LED-Cube-Code-Generator-3D). Supporting video tutorials found at [YouTube]().
+This project contains the code for a LED cube, using an Arduino board or the Atmega328 as a standalone with Atmel Studio. It's the code supporting the graphical programming tool [LED Cube Code Generator 3D](https://github.com/mariugul/LED-Cube-Code-Generator-3D). Supporting video tutorials found at [YouTube](). 
 
 ### Why? What's the difference?
 The Arduino board is constructed with the microchip Atmega328. However, to program the chip on an Arduino board, one usually programs it with the Arduino IDE using the Arduino framework. This _can_ be limiting, because the Arduino framework is an abstraction layer that causes the Atmega328 to run slower than its potential. In a LED cube, speed is very important as well as memory for the light patterns. These reasons led the motivation to write the code in **C**. This gave a better and more efficient code, not using the Arduino framework. However, the code is **fully compatible** with the Arduino board and can be uploaded with the Arduino IDE. The project was based on using the bootloader inside the Arduino board to upload the code. However, it's entirely possible with little to no effort to upload the code to a standalone Atmega328, using Atmel Studio.
@@ -58,6 +58,9 @@ This project is licensed under the MIT license and is open source. You are free 
 
 ## Contributing
 If you want to contribute that's great! Send a pull request and I will review it.
+
+## Previous Version
+The first version of the LED cube code was written entirely on Arduino. This code uses lots of nested `for()` and `while()` loops and `delay()`. It's simple and it does work. The code, corresponding code generator and instructions can be found at [Instructables](https://www.instructables.com/id/LED-CUBE-CODE-4x4x4-Arduino/). Who wrote the Arduino code is not known to me, however I made the code generator application.
 
 ## Authors
 Marius C. K. Gulbrandsen
