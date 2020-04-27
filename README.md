@@ -15,7 +15,7 @@ When programming Arduino, to control the Input/Output (IO) pins, one uses `digit
 
 For the reasons above and because the sole purpose of a LED cube is to quickly turn IO pins on/off, the Arduino framework was not used, in order to produce a more efficient and accurate LED cube.
 
-## Arduino <img src="https://library.kissclipart.com/20181207/ejq/kissclipart-arduino-logo-png-clipart-arduino-starter-kit-k0000-71cedd3a2fcbfa0f.jpg" alt="" width="30"/>
+## Arduino <img src="https://cdn.iconscout.com/icon/free/png-512/arduino-4-569256.png" alt="" width="40"/>
 Do you wish to use the Arudino IDE and not Atmel Studio? Read on.
 
 #### Development Board
