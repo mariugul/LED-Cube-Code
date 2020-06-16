@@ -171,7 +171,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="inc" />
+    <Folder Include="inc\" />
     <Folder Include="src" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />

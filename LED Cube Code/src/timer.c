@@ -18,17 +18,18 @@
 //---------------------------------
 void timer_init()
 {
-	// Set up TIMER1 clock to system clock, prescaler = 64
-	TCCR1B &= ~(1 << CS12);
-	TCCR1B |=  (1 << CS11);
-	TCCR1B |=  (1 << CS10);
-	
-	// Set compare match value, triggers interrupt every 1ms
-	OCR1A = 250; 
-	
-	// Enable compare match interrupt
+	//OCR1A = 0x3D08;
+	OCR1A = 156; // 10ms with 1024 prescaler
+
+	// Mode 4, CTC on OCR1A
+	TCCR1B |= (1 << WGM12);
+
+	//Set interrupt on compare match
 	TIMSK1 |= (1 << OCIE1A);
 	
+	// Set prescaler to 1024 and start the timer
+	TCCR1B |= (1 << CS12) | (1 << CS10);
+	
 	// Global interrupt enable
-	sei();    
+	sei();
 }

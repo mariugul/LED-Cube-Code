@@ -29,7 +29,7 @@ enum {PLANE1, PLANE2, PLANE3, PLANE4};
 #define SET_LED(IDX, PIN)										\
 	({															\
 		if      (IDX >= 0 && IDX <= 7)  PORTD |= (1 << PIN);	\
-		else if (IDX > 7 && IDX <= 13)  PORTB |= (1 << PIN);	\
+		else if (IDX > 7  && IDX <= 13) PORTB |= (1 << PIN);	\
 		else if (IDX > 13 && IDX <= 15)	PORTC |= (1 << PIN);	\
 	})
 			
