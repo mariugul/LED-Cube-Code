@@ -163,6 +163,9 @@
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="src\gpio.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="src\timer.c">
       <SubType>compile</SubType>
     </Compile>
