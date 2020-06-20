@@ -84,7 +84,7 @@ int main(void)
 	PORTD = 0;
 	
 	// Set up timer interrupt
-	OCR1A = 39;						     // 156 gives 10ms with 1024 prescaler
+	OCR1A = 39;						     // 39 gives 2.5ms interrupts with 1024 prescaler = 10ms patterns and 50Hz
 	TCCR1B |= (1 << WGM12);				 // Mode 4, CTC on OCR1A
 	TIMSK1 |= (1 << OCIE1A);			 // Set interrupt on compare match
 	TCCR1B |= (1 << CS12) | (1 << CS10); // Set prescaler to 1024 and start the timer
