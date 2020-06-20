@@ -21,7 +21,7 @@
 #define PORT_C_MASK 0xC000
 #define PORT_D_MASK 0x00FF
 
-// Shifts correct values from pattern buffer to port variables
+// Shifts correct values from pattern buffer to port-variables
 #define SHIFT_PORT_B 8
 #define SHIFT_PORT_C 10
 
@@ -40,9 +40,14 @@
 // Minimum possible time variable
 #define MIN_PATTERN_TIME 10
 
+// Index of pattern table buffer time variable 
+#define TIME_IDX 4
+
 // Global Variables
 // -------------------------------------------
-uint16_t pattern_buf[5] = {}; // Holds one pattern line at a time from progmem
+
+// Holds one pattern line at a time from progmem
+uint16_t pattern_buf[5] = {};
 
 // Contains the values for setting the I/O ports
 uint8_t port_b = 0x00;
@@ -111,24 +116,28 @@ int main(void)
 				current_line    = -1;
 			}
 			else
-			pattern_counter += pattern_buf_size; // Increment to get next line from pattern table
+				// Increment to get next line from pattern table
+				pattern_counter += pattern_buf_size; 
 			
 			get_new_line = false;
 		}
 		
 		// Calculate port values
-		port_b =  (pattern_buf[current_plane] & PORT_B_MASK) >> SHIFT_PORT_B;
+		port_b =  (pattern_buf[current_plane] & PORT_B_MASK) >> SHIFT_PORT_B; 
 		port_c = ((pattern_buf[current_plane] & PORT_C_MASK) >> SHIFT_PORT_C) ^ plane_mask[current_plane]; // XOR to find the current PLANE to turn on
-		port_d =  (pattern_buf[current_plane] & PORT_D_MASK);
+		port_d =  (pattern_buf[current_plane] & PORT_D_MASK); // Don't need a shift because it's already in the right place
 		
-		// Logic for switching correct plane
+		// Logic for switching correct plane and time
 		if (current_plane == NR_OF_PLANES - 1)
 		{
+			// Reset to sart calculating from the first plane again
 			current_plane = 0;
-			time_counter++;
+			
+			// Increment every time one pattern has finished
+			time_counter++; 
 			
 			// Logic for the amount of time for each plane
-			if (time_counter == pattern_buf[4] / MIN_PATTERN_TIME)
+			if (time_counter == pattern_buf[TIME_IDX] / MIN_PATTERN_TIME)
 			{
 				// Get new line only when the pattern has run the correct amount of times corresponding to the time variable
 				get_new_line = true;
@@ -136,21 +145,20 @@ int main(void)
 			}
 		}
 		else
-		{
+			// Increment to calculate ports for the next plane
 			current_plane++;
-		}
 		
-		sleep_cpu(); // Sleep until interrupt from timer
+		
+		// Sleep until interrupt from timer
+		sleep_cpu(); 
 	}
 }
 
 // Interrupt Service Routine
 ISR (TIMER1_COMPA_vect)
 {
-	// Switch on the LEDs on the current plane
+	// Switch on the LEDs for the current plane
 	PORTB = port_b;
 	PORTD = port_d;
 	PORTC = port_c; // Port C is last because it turns on the plane also
 }
-
-
