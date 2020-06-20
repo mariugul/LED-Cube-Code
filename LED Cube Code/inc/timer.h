@@ -22,5 +22,7 @@
 // Function Prototypes
 //---------------------------------
 void timer_init();
+void global_interrupt_enable();
+void global_interrupt_disable();
 
 #endif
