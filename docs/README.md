@@ -19,7 +19,7 @@ This project contains the code for a LED cube, using an Arduino board or the Atm
     * [Arduino](#Arduino)
     * [Atmel Studio](#AtmelStudio)
 * [Download and Tools](#DownloadTools)
-    * [Code](#Code)
+    * [Code](#DownloadCode)
     * [Tools](#Tools)
 * [Supported Cubes](#SupportedCubes)
 * [Help and Contributing](#HelpContributing)  
@@ -231,7 +231,7 @@ Currently this project supports a 4x4x4 LED cube.
 
 ## Download and Tools
 
-<a name="Code"/>
+<a name="DownloadCode"/>
 
 ### Code
 
