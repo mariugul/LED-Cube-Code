@@ -68,7 +68,7 @@ While you can write this pattern file yourself, I have created a 3D animated too
 TODO: Explain
 
 ## Upload Code
-### Arduino <img src="https://cdn.iconscout.com/icon/free/png-512/arduino-4-569256.png" alt="" width="20"/>
+### Arduino <img src="https://cdn.iconscout.com/icon/free/png-512/arduino-4-569256.png" alt="" width="30"/>
 Do you wish to use the Arduino IDE? Read on.
 
 #### Development Board
