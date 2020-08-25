@@ -7,23 +7,25 @@
 This project contains the code for a LED cube, using an Arduino board or the Atmega328 as a standalone with Atmel Studio. The code was developed together with the [Cube 3D](https://github.com/mariugul/cube-3d) programming tool. Supporting video tutorials found at [YouTube]()(coming soon). 
 
 ## Table of Contents  
-* [Supported Cubes](#SupportedCubes)
+
 * [Difference between Arduino and Atmega328](#ArduinoAtmega328)
 * [Arduino Framework?](#ArduinoFramework)
 * [Arduino vs Atmel Studio](#ArduinoVSAtmel)
 * [Wiring the Cube](#WiringCube)
 * [Code](#Code)
+    * [Pattern File](#)
+    * [Main Code](#)
 * [Upload Code](#UploadCode)
+    * [Arduino](#)
+    * [Atmel Studio](#)
 * [Download and Tools](#DownloadTools)
+    * [Code](#)
+    * [Tools](#)
+* [Supported Cubes](#SupportedCubes)
 * [Help and Contributing](#HelpContributing)  
 * [Previous Version](#PreviousVersion)
 * [License](#License) 
 * [Authors](#Authors)
-
-
-## Supported Cubes
-<a name="SupportedCubes"/>
-Currently this project supports a 4x4x4 LED cube.
 
 ## Difference between Arduino and Atmega328?
 <a name="ArduinoAtmega328"/>
@@ -190,6 +192,10 @@ TODO: Add how to set up Arduino upload.
 
 #### Standalone Atmega328
 If you don't have an Arduino board, you will need a programmer like an [Atmel ICE](https://www.microchip.com/DevelopmentTools/ProductDetails/ATATMEL-ICE) or similar. Configure Atmel Studio according to the type of programmer you have, and upload the code.
+
+## Supported Cubes
+<a name="SupportedCubes"/>
+Currently this project supports a 4x4x4 LED cube.
 
 ## Download and Tools
 <a name="DownloadTools"/>
