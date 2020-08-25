@@ -96,9 +96,9 @@ As shown in the code above `PORTB` is set to be the value of `port_b` in the ISR
 The code below is how the actual calculation of the port values are done. This is the value that sets the correct IO pins to high and low depending on what's in the pattern table. 
 ```c
 // Calculate port values
-port_b = (pattern_buf[current_plane] & PORT_B_MASK) >> SHIFT_PORT_B; 
+port_b = (pattern_buf[current_plane]  & PORT_B_MASK) >> SHIFT_PORT_B; 
 port_c = ((pattern_buf[current_plane] & PORT_C_MASK) >> SHIFT_PORT_C) ^ PLANE_MASK[current_plane]; // XOR to find the current PLANE to turn on
-port_d = (pattern_buf[current_plane] & PORT_D_MASK); // Don't need a shift 
+port_d = (pattern_buf[current_plane]  & PORT_D_MASK); // Don't need a shift 
 ```
 The `pattern_buf[current_plane]` is an array holding one pattern line from the pattern table. It loads upon start and when the current pattern is finished displaying. The `current_plane` makes sure only one plane is selected at a time. The array will then return a hex value e.g. `0xFFFF`. The `PORT_B_MASK` variable merely filters out the IO pins that we are not using. It's returning the value `0x3F00` which is binary `0011 1111 0000 0000`. This gives us 5 IO pins in the place of the `1`'s which will eventually be `PB0`, `PB1`, `PB2`, `PB3`, `PB4` and `PB5`. Looking at the Arduino Uno Pinout that's the pins 8 to 13. Thus far, the calculation of `port_b` is: 
 ```c
