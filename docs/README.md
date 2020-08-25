@@ -65,7 +65,25 @@ If the hex value `0xFFFF` is converted to binary it would be `1111 1111 1111 111
 While you can write this pattern file yourself, I have created a 3D animated tool that does this for you [Cube 3D](https://github.com/mariugul/cube-3d). I highly suggest using that when generating patterns as it's very time effective and it's easy to visualize what you want. Understanding what goes on behind the curtains is of course always useful. Especially if you encounter any problems and need to debug.
 
 ### Main Code
-TODO: Explain
+#### The Concept
+The fundamental concept of the LED cube is that it's divided into planes and columns. This is a [multiplexing](https://en.wikipedia.org/wiki/Multiplexing?oldformat=true) method for reducing the amount of IO pins necessary. With a 4x4x4 cube that means 20 IO pins, where 4 of them ground each plane and 16 of them supply power to the columns. The code is constructed in the way that only _one_ single plane can be on at a time. This in turn means that every plane needs to be switched on and off at a time interval, giving the illusion that the LEDs on different planes are lit.
+
+#### Interrupt Service Routine
+To switch the planes on and off an Interrupt Service Routine (ISR) is used. The ISR merely switches on and off the LEDs from a pre-calculated value that happens in the while loop. This is to reduce the amount of time spent in the ISR.
+
+```c
+// Interrupt Service Routine
+ISR (TIMER1_COMPA_vect)
+{
+	// Switch on the LEDs for the current plane
+	PORTB = port_b;
+	PORTD = port_d;
+	PORTC = port_c; // Port C is last because it turns on the plane also
+}
+```
+Because the Atmega328 is an 8-bit microcontroller, it only has 8-bit registers. Therefore it cannot switch more than 8 IO pins in one instruction. Because we need 20 IO pins it becomes necessary to set three ports which each has 8 pins accessible.
+
+<img src="https://content.arduino.cc/assets/Pinout-UNOrev3_latest.png" alt="" width=""/>
 
 ## Upload Code
 ### Arduino <img src="https://cdn.iconscout.com/icon/free/png-512/arduino-4-569256.png" alt="" width="30"/>
