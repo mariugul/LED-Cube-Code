@@ -70,14 +70,23 @@ While you can write this pattern file yourself, I have created a 3D animated too
 ### Main Code
 This section is meant to be purely informative on how the code works. It's not necessary to make the LED cube work but rather to provide insight into the code for those interested.
 #### The Concept
-The fundamental concept of the LED cube is that it's divided into planes and columns. This is a [multiplexing](https://en.wikipedia.org/wiki/Multiplexing?oldformat=true) method for reducing the amount of IO pins necessary. With a 4x4x4 cube that means 20 IO pins, where 4 of them ground each plane and 16 of them supply power to the columns. The code is constructed in the way that only _one_ single plane can be on at a time. This in turn means that every plane needs to be switched on and off at a time interval, giving the illusion that the LEDs on different planes are lit.
+The fundamental concept of the LED cube is that it's divided into planes and columns. This is a [multiplexing](https://en.wikipedia.org/wiki/Multiplexing?oldformat=true) method for reducing the amount of IO pins necessary. With a 4x4x4 cube that means 20 IO pins, where 4 of them ground each plane and 16 of them supply power to the columns. The code is constructed in the way that only _one_ plane can be on at a time. This in turn means that every plane needs to be switched on and off at a time interval, giving the illusion that the LEDs on different planes are lit.
 
-#### Interrupt Service Routine
+The code concists of a `main.c` and `pattern.h`. In `main.c` an interrupt routine is activated to switch the planes on and off at the decided time interval. After setting up all the IO pins and other necessary functionality the code enters the `while()` loop that does these things:
+* Get a new line from pattern table in `pattern.h` and put in pattern buffer.
+* Calculate the IO pin port values based on the pattern line.
+* Check wether or not to get a new pattern line on the next run, depending on the time variable e.g. how long the pattern has been displayed.
+* Sleep CPU until interrupt.
+* Upon interrupt, switch IO pins.
+* Repeat
+
+#### Arduino Uno Pinout
 The Atmega328 is an 8-bit microcontroller and only has 8-bit registers. Therefore it cannot switch more than 8 IO pins in one instruction. We need 20 IO pins and it's therefore necessary to set three ports which each has 8 pins accessible. The image below shows how the Arduino pins map to the ports `PORTB`, `PORTC` and `PORTD`.
 
 <img src="https://content.arduino.cc/assets/Pinout-UNOrev3_latest.png" alt="" width=""/>
 
-To switch the planes on and off an Interrupt Service Routine (ISR) is used. The ISR merely switches on and off the LEDs from a pre-calculated value that happens in the while loop. This is to reduce the amount of time spent in the ISR.
+#### Interrupt Service Routine
+To switch the planes on and off an Interrupt Service Routine (ISR) is used. The ISR merely switches on and off the LEDs from a pre-calculated value that happens in the while loop. This is to reduce the amount of time spent in the ISR. 
 
 ```c
 // Interrupt Service Routine
@@ -114,6 +123,9 @@ You can now see how the first 6 values of this number will equate to `PB0` throu
 For `PORTC` and `PORTD` the idea is exactly the same. However for `PORTD` we don't need a right shift because the values are already in the right place due to the `PORT_D_MASK`. This is merely because we needed those pins on the Arduino board and this is how it was mapped. Otherwise `PORTD` calculation is exactly the same as `PORTB`. 
 
 The calculation of `PORTC` is the same with one additional parameter, it has a XOR at the end. Remember that `PORTC` contains IO pins for planes and for columns? Due to this fact, we need to calculate which plane is currently going to be displayed and make that IO pin a `1`. That's the functionality of the `^` XOR operation at the end.
+
+#### Check Time Variable
+
 
 ## Upload Code
 ### Arduino <img src="https://cdn.iconscout.com/icon/free/png-512/arduino-4-569256.png" alt="" width="30"/>
