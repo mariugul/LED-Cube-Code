@@ -61,7 +61,7 @@ The array is defined as an `uint16_t`, meaning it stores 16 bit unsigned variabl
   0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 250,
 ```
 
-If the hex value `0xFFFF` is converted to binary it would be `1111 1111 1111 1111` where each bit represents one LED with the first LED starting from the right. If the bit is a `1` that particular LED will be on and if it is `0` it will be off. And that's the basic idea of how this system works and that's why a 16 bit variable will be the most optimized way of storing the patterns while still keeping it structured in planes. The time variable will of course be a 16 bit too and this is so that it's possible to (in theory) have 2^16 = 65 536ms = 65.5 seconds to display each codeline. At the time of writing this length is not possible but it will be in the future with a new revision of the code. However, most patterns will be displayed for less and much less than 1 second.
+If the hex value `0xFFFF` is converted to binary it would be `1111 1111 1111 1111` where each bit represents one LED with the first LED starting from the right. If the bit is a `1` that particular LED will be on and if it is `0` it will be off. And that's the basic idea of how this system works and that's why a 16 bit variable will be the most optimized way of storing the patterns while still keeping it structured in planes. The time variable will of course be a 16 bit too and this is so that it's possible to have 2^16 = 65 536ms = 65.5 seconds to display each codeline. However, most patterns will be displayed for much less than 1 second. 
 
 `const PROGMEM` is used to define the array as well. What `PROGMEM` does is to save the code in _program memory_ (flash) instead of SRAM memory. The reason for this is that the flash memory is bigger than the SRAM, meaning we can store more patterns in this memory. It has to be `const` because flash can only be read from once it's programmed and running.
 
@@ -125,7 +125,29 @@ For `PORTC` and `PORTD` the idea is exactly the same. However for `PORTD` we don
 The calculation of `PORTC` is the same with one additional parameter, it has a XOR at the end. Remember that `PORTC` contains IO pins for planes and for columns? Due to this fact, we need to calculate which plane is currently going to be displayed and make that IO pin a `1`. That's the functionality of the `^` XOR operation at the end.
 
 #### Check Time Variable
-
+To ensure that the patterns run for the amount of time given by the time variable in the pattern table, the code below is necessary.
+```c
+// Logic for switching correct plane and time
+if (current_plane == NR_OF_PLANES - 1)
+{
+    // Reset to sart calculating from the first plane again
+    current_plane = 0;
+    
+    // Increment every time one pattern has finished
+    time_counter++; 
+    
+    // Logic for the amount of time for each plane
+    if (time_counter == (int)(pattern_buf[TIME_IDX] / MIN_PATTERN_TIME))
+    {
+        // Get new line only when the pattern has run the correct amount of times
+        get_new_line = true;
+        time_counter = 0;
+    }
+}
+else
+    current_plane++; // Increment to calculate ports for the next plane
+```
+The variable `time_counter` is incremented every time all 4 planes have been activated, this means every fourth iteration of the `while()` loop. Therefore, it counts every time one pattern line has been run once. How ofter the ISR activates is set with the `OCR1A` register and this has to be an integer. The prescaler is set to 1024 for the most resolution. The `OCR1A` is set to the value `39`, which together with a 1024 prescaler gives ~2.5ms interrupts. The cube then runs on 50Hz, quick enough to give the illusion of persistence of light. However, it means the time variable in the pattern table has to be in increments of 10 to give _accurate patterns_. 
 
 ## Upload Code
 ### Arduino <img src="https://cdn.iconscout.com/icon/free/png-512/arduino-4-569256.png" alt="" width="30"/>
