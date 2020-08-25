@@ -60,7 +60,7 @@ So to summarize the differences. If you just want to upload the code and make it
 
 ## Wiring the Cube
 
-[<img src="numbering.png" alt="numbering.png" width="360"/>](https://github.com/mariugul/LED-Cube-Code/blob/master/docs/numbering.png) [<img src="planes.png" alt="planes.png" width="360"/>](https://github.com/mariugul/LED-Cube-Code/blob/master/docs/planes.png)
+[<img src="numbering.png" alt="numbering.png" width="360"/>](https://github.com/mariugul/LED-Cube-Code/blob/master/docs/numbering.png) [<img src="planes.png" alt="planes.png" width="355"/>](https://github.com/mariugul/LED-Cube-Code/blob/master/docs/planes.png)
 
 [<img src="schematic.jpg" alt="schematic.jpg" width="700"/>](https://github.com/mariugul/LED-Cube-Code/blob/master/docs/schematic.jpg)
 
