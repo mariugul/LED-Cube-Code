@@ -93,7 +93,7 @@ ISR (TIMER1_COMPA_vect)
 As shown in the code above `PORTB` is set to be the value of `port_b` in the ISR. `PORTB` is a avr-library variable for setting the ports and `port_b` is calculated in the while-loop from the pattern table. Only when a plane and a column (or several columns) are on at the same time will a LED light up. Because `PORTC` contains IO pins that goes to both columns and planes, it comes last so the power is turned on in that instant all at once.
 
 #### Calculation of Port Values
-The code below is how the actual calculation of the port values are done. This is the value that sets the correct IO pins to high and low depending on what's in the pattern table. 
+The IO pins we need from the Arduino Uno is `D0-D13` and `A0-A5`. These corresponds to `PD0-PD7`, `PB0-PB5` and `PC0-PC5` as can be seen from the pinout image, which makes 20 IO pins. The code below is how the actual calculation of the port values are done. This is the value that sets the correct IO pins to high and low depending on what's in the pattern table. 
 ```c
 // Calculate port values
 port_b = (pattern_buf[current_plane]  & PORT_B_MASK) >> SHIFT_PORT_B; 
@@ -104,12 +104,12 @@ The `pattern_buf[current_plane]` is an array holding one pattern line from the p
 ```c
 0xFFFF & 0x3F00 >> SHIFT_PORT_B = 0x3F00 >> SHIFT_PORT_B
 ```
-If we now look at the value `0x3F00` it didn't change because when &'ed with `0xFFFF` it's the same value. Remember that in binary `0x3F00` is `0011 1111 0000 0000`. We want to set the first 6 IO pins, hence the reason we used the `0x3F00` mask in the first place. That's why we need to shift these values to the right into `PB0` to `PB5`. Thus, `SHIFT_PORT_B` is simply the value 8 giving:
+If we now look at the value `0x3F00` it didn't change because when &'ed with `0xFFFF` it's the same value. Remember that in binary `0x3F00` is `0011 1111 0000 0000`. We want to set the first 6 IO pins, hence the reason we used the `0x3F00` mask in the first place. That's why we need to shift these values to the _right_ into `PB0` to `PB5`. Thus, `SHIFT_PORT_B` is simply the value 8 giving:
 
 ```c
 0x3F00 >> 8 = 0011 1111 0000 00000 >> 8 = 0000 0000 0011 1111
 ```
-You can now see how the first 6 values of this number will equate to `PB0` through `PB5`.
+You can now see how the first 6 values of this number will equate to `PB0` through `PB5`. 
 
 For `PORTC` and `PORTD` the idea is exactly the same. However for `PORTD` we don't need a right shift because the values are already in the right place due to the `PORT_D_MASK`. This is merely because we needed those pins on the Arduino board and this is how it was mapped. Otherwise `PORTD` calculation is exactly the same as `PORTB`. 
 
