@@ -68,7 +68,7 @@ While you can write this pattern file yourself, I have created a 3D animated too
 TODO: Explain
 
 ## Upload Code
-### Arduino <img src="https://cdn.iconscout.com/icon/free/png-512/arduino-4-569256.png" alt="" width="40"/>
+### Arduino <img src="https://cdn.iconscout.com/icon/free/png-512/arduino-4-569256.png" alt="" width="20"/>
 Do you wish to use the Arduino IDE? Read on.
 
 #### Development Board
@@ -80,7 +80,7 @@ The Arduino board has another advantage, the Atmega328 on it comes with a bootlo
 #### Arduino IDE
 The cool thing about the bootloader and the IDE is that they are developed to work together. Just open the project in the IDE, choose your Arduino board and flash the code, it's _that_ simple.
 
-### Atmel Studio <img src="https://www.it.unlv.edu/sites/default/files/styles/250_width/public/sites/default/files/assets/software/icons/atmel_studio.png?itok=Y_BrK5R2" alt="" width="30"/>
+### Atmel Studio <img src="https://www.it.unlv.edu/sites/default/files/styles/250_width/public/sites/default/files/assets/software/icons/atmel_studio.png?itok=Y_BrK5R2" alt="" width="20"/>
 Do you wish to use Atmel Studio with or without an Arduino board? Read on.
 
 #### Arduino Board
