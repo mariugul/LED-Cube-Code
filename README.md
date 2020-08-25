@@ -1,4 +1,4 @@
-# LED Cube Code for Arduino or Standalone Atmega328 (*Under Contruction)
+# LED Cube Code for Arduino or Atmega328
 [![License badge](https://img.shields.io/github/license/mariugul/LED-Cube-Code)](https://github.com/mariugul/LED-Cube-Code/blob/master/LICENSE)
 [![GitHub last commit](https://img.shields.io/github/last-commit/mariugul/LED-Cube-Code)](https://github.com/mariugul/LED-Cube-Code/commits/master)
 [![GitHub issues](https://img.shields.io/github/issues/mariugul/LED-Cube-Code)](https://github.com/mariugul/LED-Cube-Code/issues)
