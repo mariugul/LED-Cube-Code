@@ -130,18 +130,16 @@ int main(void)
 			time_counter++; 
 			
 			// Logic for the amount of time for each plane
-			if (time_counter == pattern_buf[TIME_IDX] / MIN_PATTERN_TIME)
+			if (time_counter == (int)(pattern_buf[TIME_IDX] / MIN_PATTERN_TIME))
 			{
 				// Get new line only when the pattern has run the correct amount of times corresponding to the time variable
 				get_new_line = true;
 				time_counter = 0;
 			}
-			
 		}
 		else
 			// Increment to calculate ports for the next plane
 			current_plane++;
-		
 		
 		// Sleep until interrupt from timer
 		sleep_cpu(); 
