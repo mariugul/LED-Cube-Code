@@ -4,8 +4,10 @@
 [![GitHub issues](https://img.shields.io/github/issues/mariugul/LED-Cube-Code)](https://github.com/mariugul/LED-Cube-Code/issues)
 
 
-
 This project contains the code for a LED cube, using an Arduino board or the Atmega328 as a standalone with Atmel Studio. The code was developed together with the [Cube 3D](https://github.com/mariugul/cube-3d) programming tool. Supporting video tutorials found at [YouTube](). 
+
+### Supported Cubes
+Currently this project supports a 4x4x4 LED cube.
 
 ### What's the difference between Arduino and Atmega328?
 The Arduino board is constructed with the microchip Atmega328. However, to program the chip on an Arduino board, one usually programs it with the Arduino IDE using the Arduino framework. This _can_ be limiting, because the Arduino framework is an abstraction layer that causes the Atmega328 to run slower than its potential. In a LED cube, speed is very important, as well as memory for the light patterns. These reasons led the motivation to write the code in **C** rather than to use Arduino's **C++** framework. This gave a better and more efficient code. However, the code is **fully compatible** with the Arduino board and can be uploaded with the Arduino IDE. The project was based on using the bootloader inside the Arduino board to upload the code. However, it's entirely possible with little to no effort to upload the code to a standalone Atmega328, using Atmel Studio, if you don't wish to use an Arduino.
@@ -28,13 +30,13 @@ This is Atmel's own IDE created for development on their chips, like the Atmega3
 So to summarize the differences. If you just want to upload the code and make it work, I would suggest sticking with the Arduino IDE. It's not necessary to write any code as it's already done. If you however wish to write some code yourself and want to get more into embedded development, I advice on checking out Atmel Studio.
 
 ## Arduino <img src="https://cdn.iconscout.com/icon/free/png-512/arduino-4-569256.png" alt="" width="40"/>
-Do you wish to use the Arduino IDE and not Atmel Studio? Read on.
+Do you wish to use the Arduino IDE? Read on.
 
 #### Development Board
 There will be no actual "Arduino Code" written. Keep in mind that "Arduino Code" is merely C++, with Arduino's functions from the class that the Arduino creators developed. Most of the code that you write on an Arduino is usually merely C code anyway, so there isn't a huge difference. If you plan to use your Arduino board, look at this board as a development board for the Atmega328. This board has a crystal (clock), USB port and a programmer, among other things. So in the case you were to buy a standalone Atmega328, you would have to buy all these parts and connect them somehow, but you don't need that!
 
 #### Bootloader
-The Arduino board has another advantage, the Atmega328 on it comes with a bootloader. This means that there exists a tiny program on the chip that can easily upload code from your computer with a USB cable. It's not that easy with standalone chips. This is a very convenient thing that is going to be expoited in this project.
+The Arduino board has another advantage, the Atmega328 on it comes with a bootloader. This means that there exists a tiny program on the chip that can easily upload code from your computer with a USB cable. It's not that easy with standalone chips. This is a very convenient thing that is going to be exploited in this project.
 
 #### Arduino IDE
 So what about the Arduino IDE? The cool thing about the bootloader and the IDE is that they are developed to work together. Just open the project in the IDE and flash the code, it's _that_ simple.
