@@ -57,9 +57,9 @@ If you don't have an Arduino board, you will need a programmer. Configure Atmel 
 The code can be downloaded from [Releases](https://github.com/mariugul/LED-Cube-Code/releases) or simply fork or download the repository.
 
 ### Tools
-**[Arduino IDE]()**
+**[Arduino IDE](https://www.arduino.cc/en/main/software)**
 
-**[Atmel Studio]()**
+**[Atmel Studio](https://www.microchip.com/mplab/avr-support/atmel-studio-7)**
 
 ## Code Details
 How does the code work? If you are interested in how the code actually works, check out the WIKI? YouTube videos? TODO: Figure out this section.
