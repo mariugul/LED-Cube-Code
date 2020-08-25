@@ -151,7 +151,7 @@ The variable `time_counter` is incremented every time all 4 planes have been act
 
 ## Upload Code
 ### Arduino <img src="https://cdn.iconscout.com/icon/free/png-512/arduino-4-569256.png" alt="" width="30"/>
-Do you wish to use the Arduino IDE? Read on.
+To use the Arduino IDE, read on.
 
 #### Development Board
 There has been no actual "Arduino Code" written. Keep in mind that "Arduino Code" is merely a C++ class. Most of the code that you write on an Arduino is usually merely C code anyway, so there isn't going to be a huge difference. Look at the Arduino board as a development board for the Atmega328. This board has a crystal, USB port and a programmer, among other things. So if you were going to buy a standalone Atmega328 instead, you would have to buy all these parts and connect them somehow. Luckily, you don't need that!
@@ -165,7 +165,7 @@ The Arduino board has another advantage, the Atmega328 on it comes with a bootlo
 * Build and upload code.
 
 ### Atmel Studio <img src="https://www.it.unlv.edu/sites/default/files/styles/250_width/public/sites/default/files/assets/software/icons/atmel_studio.png?itok=Y_BrK5R2" alt="" width="20"/>
-Do you wish to use Atmel Studio with or without an Arduino board? Read on.
+To use Atmel Studio with or without an Arduino board, read on.
 
 #### Arduino Board
 If you are using the Arduino board, the bootloader on the chip will be utilized for uploading and it works just as simply as the Arduino IDE.
