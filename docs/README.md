@@ -33,13 +33,13 @@ So to summarize the differences. If you just want to upload the code and make it
 Do you wish to use the Arduino IDE? Read on.
 
 #### Development Board
-There will be no actual "Arduino Code" written. Keep in mind that "Arduino Code" is merely C++, with Arduino's functions from the class that the Arduino creators developed. Most of the code that you write on an Arduino is usually merely C code anyway, so there isn't a huge difference. If you plan to use your Arduino board, look at this board as a development board for the Atmega328. This board has a crystal (clock), USB port and a programmer, among other things. So in the case you were to buy a standalone Atmega328, you would have to buy all these parts and connect them somehow, but you don't need that!
+There will be no actual "Arduino Code" written. Keep in mind that "Arduino Code" is merely a C++ class. Most of the code that you write on an Arduino is usually merely C code anyway, so there isn't going to be a huge difference. If you plan to use your Arduino board, look at this board as a development board for the Atmega328. This board has a crystal, USB port and a programmer, among other things. So if you were going to buy a standalone Atmega328 instead, you would have to buy all these parts and connect them somehow. Luckily, you don't need that!
 
 #### Bootloader
 The Arduino board has another advantage, the Atmega328 on it comes with a bootloader. This means that there exists a tiny program on the chip that can easily upload code from your computer with a USB cable. It's not that easy with standalone chips. This is a very convenient thing that is going to be exploited in this project.
 
 #### Arduino IDE
-So what about the Arduino IDE? The cool thing about the bootloader and the IDE is that they are developed to work together. Just open the project in the IDE and flash the code, it's _that_ simple.
+The cool thing about the bootloader and the IDE is that they are developed to work together. Just open the project in the IDE, choose your Arduino board and flash the code, it's _that_ simple.
 
 ## Atmel Studio <img src="https://www.it.unlv.edu/sites/default/files/styles/250_width/public/sites/default/files/assets/software/icons/atmel_studio.png?itok=Y_BrK5R2" alt="" width="30"/>
 Do you wish to use Atmel Studio with or without an Arduino board? Read on.
@@ -54,7 +54,7 @@ If you don't have an Arduino board, you will need a programmer. Configure Atmel 
 ## Download and Tools
 
 ### Code
-The code can be downloaded from [some future link]().
+The code can be downloaded from [Releases](https://github.com/mariugul/LED-Cube-Code/releases) or simply fork or download the repository.
 
 ### Tools
 **[Arduino IDE]()**
@@ -62,25 +62,18 @@ The code can be downloaded from [some future link]().
 **[Atmel Studio]()**
 
 ## Code Details
-How does the code work? If you are interested in how the code actually works, read on. If you don't care, skip this section.
+How does the code work? If you are interested in how the code actually works, check out the WIKI? YouTube videos? TODO: Figure out this section.
 
-#### Modules
-These are the files in this project.
-* gpio.h
-* pattern.h
-* timer.h and .c
-* main.c
 
-TODO: Finish code explanation.
-
-## License
-This project is licensed under the MIT license and is open source. You are free to use this project as you wish as long as you credit the work. See the [LICENSE](LICENSE) file for details.
-
-## Contributing
-If you want to contribute that's great! Send a pull request and I will review it.
+## Help and Contributing
+Check out the [Discord](https://discord.com/invite/ZgxjkC2) server if you need help with the code not working or if you have suggestions for improvement! The [YouTube]() channel has video tutorials to help out as well. (YouTube videos coming soon)
 
 ## Previous Version
-The first version of the LED cube code was written entirely on Arduino. This code uses lots of nested `for()` and `while()` loops and `delay()`. It's simple and it works. The code, corresponding code generator and instructions can be found at [Instructables](https://www.instructables.com/id/LED-CUBE-CODE-4x4x4-Arduino/) <img src="https://logodix.com/logo/1584749.png" alt="" width="20"/>. Who wrote the Arduino code is not known to me, however I made the code generator application.    
+The first version of the LED cube code was written entirely on Arduino. This code uses lots of nested `for()` and `while()` loops as well as `delay()`. It's simple and it works. The code, corresponding code generator and instructions can be found at [Instructables](https://www.instructables.com/id/LED-CUBE-CODE-4x4x4-Arduino/) <img src="https://logodix.com/logo/1584749.png" alt="" width="20"/> for anyone interested. Who wrote the Arduino code is not known to me, however I made the code generator application which is now deprecated to the newer [Cube 3D](https://github.com/mariugul/cube-3d).    
+
+## License
+This project is licensed under the MIT license and is open source. You are free to use this project as you wish as long as you credit the work. See the [LICENSE](LICENSE) file for details. I would highly appreciate if you contributed to the project that you share it so this can be a big open source project!
 
 ## Authors
-Marius C. K. Gulbrandsen
+
+<img src="https://lh3.googleusercontent.com/fqYJHtyzZzA4vacRzeJoB93QNvA5-mvR-8UB5oVLxdYDSTpfLp_KgYD4IqVGJUgFEJo" alt="" width="15"/> [Marius C. K. Gulbrandsen](https://www.linkedin.com/in/marius-c-k-gulbrandsen-963a69130/) 
