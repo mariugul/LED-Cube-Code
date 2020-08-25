@@ -154,13 +154,15 @@ The variable `time_counter` is incremented every time all 4 planes have been act
 Do you wish to use the Arduino IDE? Read on.
 
 #### Development Board
-There will be no actual "Arduino Code" written. Keep in mind that "Arduino Code" is merely a C++ class. Most of the code that you write on an Arduino is usually merely C code anyway, so there isn't going to be a huge difference. If you plan to use your Arduino board, look at this board as a development board for the Atmega328. This board has a crystal, USB port and a programmer, among other things. So if you were going to buy a standalone Atmega328 instead, you would have to buy all these parts and connect them somehow. Luckily, you don't need that!
+There has been no actual "Arduino Code" written. Keep in mind that "Arduino Code" is merely a C++ class. Most of the code that you write on an Arduino is usually merely C code anyway, so there isn't going to be a huge difference. Look at the Arduino board as a development board for the Atmega328. This board has a crystal, USB port and a programmer, among other things. So if you were going to buy a standalone Atmega328 instead, you would have to buy all these parts and connect them somehow. Luckily, you don't need that!
 
 #### Bootloader
 The Arduino board has another advantage, the Atmega328 on it comes with a bootloader. This means that there exists a tiny program on the chip that can easily upload code from your computer with a USB cable. It's not that easy with standalone chips. This is a very convenient thing that is going to be exploited in this project.
 
-#### Arduino IDE
-The cool thing about the bootloader and the IDE is that they are developed to work together. Just open the project in the IDE, choose your Arduino board and flash the code, it's _that_ simple.
+#### Flash the Arduino
+* Open the project in the Arduino folder in the Arduino IDE.
+* Choose your Arduino board.
+* Build and upload code.
 
 ### Atmel Studio <img src="https://www.it.unlv.edu/sites/default/files/styles/250_width/public/sites/default/files/assets/software/icons/atmel_studio.png?itok=Y_BrK5R2" alt="" width="20"/>
 Do you wish to use Atmel Studio with or without an Arduino board? Read on.
@@ -170,7 +172,7 @@ If you are using the Arduino board, the bootloader on the chip will be utilized 
 TODO: Add how to set up Arduino upload.
 
 #### Standalone Atmega328
-If you don't have an Arduino board, you will need a programmer. Configure Atmel Studio according to the type of programmer you have, and upload the code.
+If you don't have an Arduino board, you will need a programmer like an [Atmel ICE](https://www.microchip.com/DevelopmentTools/ProductDetails/ATATMEL-ICE) or similar. Configure Atmel Studio according to the type of programmer you have, and upload the code.
 
 ## Download and Tools
 
