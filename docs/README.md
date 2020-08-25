@@ -31,7 +31,7 @@ So to summarize the differences. If you just want to upload the code and make it
 
 ## Code
 ### Pattern File
-To generate a light show on the LED cube you only need to edit the file `pattern.h`. This is simply a header file `.h` with an array containing the patterns. The default file looks like this and turns all LEDs on and off at a 250ms interval.
+To generate a light show on the LED cube you only need to edit the file `pattern.h`. This is simply a header file `.h` with an array containing the patterns. The default file looks like below and turns all LEDs on and off at a 250ms interval.
 ```c
 #ifndef __PATTERN_H__
 #define __PATTERN_H__
