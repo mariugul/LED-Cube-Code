@@ -29,6 +29,9 @@ This is Atmel's own IDE created for development on their chips, like the Atmega3
 ### Summary
 So to summarize the differences. If you just want to upload the code and make it work, I would suggest sticking with the Arduino IDE. It's not necessary to write any code as it's already done, except for the pattern.h file to generate LED patterns. However, I highly recommend using the [Cube 3D](https://github.com/mariugul/cube-3d) software to generate this file. If you however wish to write some code yourself and want to get more into embedded development, I advice on checking out Atmel Studio.
 
+## Wiring the Cube
+TODO: image/schematic and or explanation of wiring.
+
 ## Code
 ### Pattern File
 To generate a light show on the LED cube you only need to edit the file `pattern.h`. This is simply a header file `.h` with an array containing the patterns. The default file looks like below and turns all LEDs on and off at a 250ms interval.
@@ -90,13 +93,11 @@ ISR (TIMER1_COMPA_vect)
 As shown in the code above `PORTB` is set to be the value of `port_b` in the ISR. `PORTB` is a avr-library variable for setting the ports and `port_b` is calculated in the while-loop from the pattern table. Only when a plane and a column (or several columns) are on at the same time will a LED light up. Because `PORTC` contains IO pins that goes to both columns and planes, it comes last so the power is turned on in that instant all at once.
 
 #### Calculation of Port Values
-The code below is how the actual calculation of the port values are done. This is the value that sets the correct IO pins to high and low. 
+The code below is how the actual calculation of the port values are done. This is the value that sets the correct IO pins to high and low depending on what's in the pattern table. 
 ```c
 // Calculate port values
 port_b =  (pattern_buf[current_plane] & PORT_B_MASK) >> SHIFT_PORT_B; 
-
 port_c = ((pattern_buf[current_plane] & PORT_C_MASK) >> SHIFT_PORT_C) ^ PLANE_MASK[current_plane]; // XOR to find the current PLANE to turn on
-
 port_d =  (pattern_buf[current_plane] & PORT_D_MASK); // Don't need a shift 
 ```
 The `pattern_buf[current_plane]` is an array holding one pattern line from the pattern table. It loads upon start and when the current pattern is finished displaying. The `current_plane` makes sure only one plane is selected at a time. The array will then return a hex value e.g. `0xFFFF`. The `PORT_B_MASK` variable merely filters out the IO pins that we are not using. It's returning the value `0x3F00` which is binary `0011 1111 0000 0000`. This gives us 5 IO pins in the place of the `1`'s which will eventually be `PB0`, `PB1`, `PB2`, `PB3`, `PB4` and `PB5`. Looking at the Arduino Uno Pinout that's the pins 8 to 13. Thus far, the calculation of `port_b` is: 
