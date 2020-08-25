@@ -6,10 +6,27 @@
 
 This project contains the code for a LED cube, using an Arduino board or the Atmega328 as a standalone with Atmel Studio. The code was developed together with the [Cube 3D](https://github.com/mariugul/cube-3d) programming tool. Supporting video tutorials found at [YouTube]()(coming soon). 
 
+## Table of Contents  
+* [Supported Cubes](#SupportedCubes)
+* [Difference between Arduino and Atmega328](#ArduinoAtmega328)
+* [Arduino Framework?](#ArduinoFramework)
+* [Arduino vs Atmel Studio](#ArduinoVSAtmel)
+* [Wiring the Cube](#WiringCube)
+* [Code](#Code)
+* [Upload Code](#UploadCode)
+* [Download and Tools](#DownloadTools)
+* [Help and Contributing](#HelpContributing)  
+* [Previous Version](#PreviousVersion)
+* [License](#License) 
+* [Authors](#Authors)
+
+
 ## Supported Cubes
+<a name="SupportedCubes"/>
 Currently this project supports a 4x4x4 LED cube.
 
-## What's the difference between Arduino and Atmega328?
+## Difference between Arduino and Atmega328?
+<a name="ArduinoAtmega328"/>
 The Arduino board is constructed with the microchip Atmega328. However, to program the chip on an Arduino board, one usually programs it with the Arduino IDE using the Arduino framework. This _can_ be limiting, because the Arduino framework is an abstraction layer that causes the Atmega328 to run slower than its potential. In a LED cube, speed is very important, as well as memory for the light patterns. These reasons led the motivation to write the code in **C** rather than to use Arduino's **C++** framework. This gave a better and more efficient code. However, the code is **fully compatible** with the Arduino board and can be uploaded with the Arduino IDE. The project was based on using the bootloader inside the Arduino board to upload the code. However, it's entirely possible with little to no effort to upload the code to a standalone Atmega328, using Atmel Studio, if you don't wish to use an Arduino.
 
 ## Arduino Framwork?
@@ -175,7 +192,7 @@ TODO: Add how to set up Arduino upload.
 If you don't have an Arduino board, you will need a programmer like an [Atmel ICE](https://www.microchip.com/DevelopmentTools/ProductDetails/ATATMEL-ICE) or similar. Configure Atmel Studio according to the type of programmer you have, and upload the code.
 
 ## Download and Tools
-
+<a name="DownloadTools"/>
 ### Code
 The code can be downloaded from [Releases](https://github.com/mariugul/LED-Cube-Code/releases) or simply fork or download the repository.
 
@@ -185,14 +202,17 @@ The code can be downloaded from [Releases](https://github.com/mariugul/LED-Cube-
 **[Atmel Studio](https://www.microchip.com/mplab/avr-support/atmel-studio-7)**
 
 ## Help and Contributing
+<a name="HelpContributing"/>
 Check out the [Discord](https://discord.com/invite/ZgxjkC2) server if you need help with the code not working or if you have suggestions for improvement! The [YouTube]() channel has video tutorials to help out as well. (YouTube videos coming soon)
 
 ## Previous Version
+<a name="PreviousVersion"/>
 The first version of the LED cube code was written entirely on Arduino. This code uses lots of nested `for()` and `while()` loops as well as `delay()`. It's simple and it works. The code, corresponding code generator and instructions can be found at [Instructables](https://www.instructables.com/id/LED-CUBE-CODE-4x4x4-Arduino/) <img src="https://logodix.com/logo/1584749.png" alt="" width="15"/> for anyone interested. Who wrote the Arduino code is not known to me, however I made the code generator application which is now deprecated to the newer [Cube 3D](https://github.com/mariugul/cube-3d).    
 
 ## License
+<a name="License"/>
 This project is licensed under the MIT license and is open source. You are free to use this project as you wish as long as you credit the work. See the [LICENSE](LICENSE) file for details. I would highly appreciate if you contributed to the project that you share it so this can be a big open source project!
 
 ## Authors
-
+<a name="Authors"/>
 <img src="https://lh3.googleusercontent.com/fqYJHtyzZzA4vacRzeJoB93QNvA5-mvR-8UB5oVLxdYDSTpfLp_KgYD4IqVGJUgFEJo" alt="" width="15"/> [Marius C. K. Gulbrandsen](https://www.linkedin.com/in/marius-c-k-gulbrandsen-963a69130/) 
