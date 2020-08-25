@@ -15,6 +15,18 @@ When programming Arduino, to control the Input/Output (IO) pins, one uses `digit
 
 For the reasons above and because the sole purpose of a LED cube is to quickly turn IO pins on/off, the Arduino framework was not used in order to produce a more efficient and accurate LED cube.
 
+### Arduino vs Atmel Studio
+And IDE is an Integrated Developement Environment, meaning it's essentially a code editor with programming capabilities and usually some debug capabilities. 
+
+#### Arduino IDE
+Arduino developed their own simple to use IDE for writing code and programming the boards. For beginners and quick development, it's an ok IDE but once you start getting serious, it's very limiting. It's hard to edit code efficiently and it doesn't have as much customizability. You can use it with an external code editor and simple use the Arduino IDE as the programmer if you wish. A better choice in my opinion, is to simply use Atmel Studio if you start to get serious about embedded development.
+
+#### Atmel Studio
+This is Atmel's own IDE created for development on their chips, like the Atmega328. It's gonna feel closer to being in Visual Studio and it's easier to work in than the Arduino IDE. It can be set up to use the AVRDUDE programmer, so that you can upload code to the board. TODO: Link to how to set up Atmel Studio programmer.
+
+#### Summary
+So to summarize the differences. If you just want to upload the code and make it work, I would suggest sticking with the Arduino IDE. It's not necessary to write any code as it's already done. If you however wish to write some code yourself and want to get more into embedded development, I advice on checking out Atmel Studio.
+
 ## Arduino <img src="https://cdn.iconscout.com/icon/free/png-512/arduino-4-569256.png" alt="" width="40"/>
 Do you wish to use the Arduino IDE and not Atmel Studio? Read on.
 
