@@ -33,15 +33,17 @@ This project contains the code for a LED cube, using an Arduino board or the Atm
 
 The Arduino board is constructed with the microchip Atmega328. However, to program the chip on an Arduino board, one usually programs it with the Arduino IDE using the Arduino framework. This _can_ be limiting, because the Arduino framework is an abstraction layer that causes the Atmega328 to run slower than its potential. In a LED cube, speed is very important, as well as memory for the light patterns. These reasons led the motivation to write the code in **C** rather than to use Arduino's **C++** framework. This gave a better and more efficient code. However, the code is **fully compatible** with the Arduino board and can be uploaded with the Arduino IDE. The project was based on using the bootloader inside the Arduino board to upload the code. However, it's entirely possible with little to no effort to upload the code to a standalone Atmega328, using Atmel Studio, if you don't wish to use an Arduino.
 
-## Arduino Framwork?
 <a name="ArduinoFramework"/>
+
+## Arduino Framwork?
 
 When programming Arduino, to control the Input/Output (IO) pins, one uses `digitalWrite(HIGH)` and `digitalWrite(LOW)`. These functions are part of the Arduino class, which is fundamentally a **C++** class. While convenient, `digitalWrite()` is 15 to 30 times slower than manipulating the IO pins directly in **C** as intended by Atmel. This is done by bitshifting e.g. `PORTB0 |= (1 << PIN0)`. The second part of the Arduino framework issues has to do with interrupts. Arduino uses its own `millis()` function to keep track of time. For this to work, an interrupt routine has to run in the background, even if you do not utilize `delay()` or interrupts in your code. This disturbs the timing and contributes to a less efficient LED cube.
 
 For the reasons above and because the sole purpose of a LED cube is to quickly turn IO pins on/off, the Arduino framework was not used in order to produce a more efficient and accurate LED cube.
 
-## Arduino vs Atmel Studio
 <a name="ArduinoVSAtmel"/>
+
+## Arduino vs Atmel Studio
 
 And IDE is an Integrated Developement Environment, meaning it's essentially a code editor with programming capabilities and usually some debug capabilities. 
 
@@ -54,16 +56,19 @@ This is Atmel's own IDE created for development on their chips, like the Atmega3
 ### Summary
 So to summarize the differences. If you just want to upload the code and make it work, I would suggest sticking with the Arduino IDE. It's not necessary to write any code as it's already done, except for the pattern.h file to generate LED patterns. However, I highly recommend using the [Cube 3D](https://github.com/mariugul/cube-3d) software to generate this file. If you however wish to write some code yourself and want to get more into embedded development, I advice on checking out Atmel Studio.
 
-## Wiring the Cube
 <a name="WiringCube"/>
+
+## Wiring the Cube
 
 TODO: image/schematic and or explanation of wiring.
 
-## Code
 <a name="Code"/>
 
-### Pattern File
+## Code
+
 <a name="PatternFile"/>
+
+### Pattern File
 
 To generate a light show on the LED cube you only need to edit the file `pattern.h`. This is simply a header file `.h` with an array containing the patterns. The default file looks like below and turns all LEDs on and off at a 250ms interval.
 ```c
@@ -98,8 +103,9 @@ If the hex value `0xFFFF` is converted to binary it would be `1111 1111 1111 111
 
 While you can write this pattern file yourself, I have created a 3D animated tool that does this for you [Cube 3D](https://github.com/mariugul/cube-3d). I highly suggest using that when generating patterns as it's very time effective and it's easy to visualize what you want. Understanding what goes on behind the curtains is of course always useful. Especially if you encounter any problems and need to debug.
 
-### Main Code
 <a name="MainCode"/>
+
+### Main Code
 
 This section is meant to be purely informative on how the code works. It's not necessary to make the LED cube work but rather to provide insight into the code for those interested.
 #### The Concept
@@ -182,11 +188,13 @@ else
 ```
 The variable `time_counter` is incremented every time all 4 planes have been activated, this means every fourth iteration of the `while()` loop. Therefore, it counts every time one pattern line has been run once. How often the ISR activates is set with the `OCR1A` register and this has to be an integer. The prescaler is set to 1024 for the most resolution. The `OCR1A` is set to the value `39`, which together with a 1024 prescaler gives ~2.5ms interrupts. The cube then runs on 50Hz, quick enough to give the illusion of persistence of light. However, it means the time variable in the pattern table has to be in increments of 10 to give _accurate patterns_. 
 
-## Upload Code
 <a name="UploadCode"/>
 
-### Arduino <img src="https://cdn.iconscout.com/icon/free/png-512/arduino-4-569256.png" alt="" width="30"/>
+## Upload Code
+
 <a name="Arduino"/>
+
+### Arduino <img src="https://cdn.iconscout.com/icon/free/png-512/arduino-4-569256.png" alt="" width="30"/>
 
 To use the Arduino IDE, read on.
 
@@ -201,8 +209,9 @@ The Arduino board has another advantage, the Atmega328 on it comes with a bootlo
 * Choose your Arduino board.
 * Build and upload code.
 
-### Atmel Studio <img src="https://www.it.unlv.edu/sites/default/files/styles/250_width/public/sites/default/files/assets/software/icons/atmel_studio.png?itok=Y_BrK5R2" alt="" width="20"/>
 <a name="AtmelStudio"/>
+
+### Atmel Studio <img src="https://www.it.unlv.edu/sites/default/files/styles/250_width/public/sites/default/files/assets/software/icons/atmel_studio.png?itok=Y_BrK5R2" alt="" width="20"/>
 To use Atmel Studio with or without an Arduino board, read on.
 
 #### Arduino Board
@@ -212,42 +221,50 @@ TODO: Add how to set up Arduino upload.
 #### Standalone Atmega328
 If you don't have an Arduino board, you will need a programmer like an [Atmel ICE](https://www.microchip.com/DevelopmentTools/ProductDetails/ATATMEL-ICE) or similar. Configure Atmel Studio according to the type of programmer you have, and upload the code.
 
-## Supported Cubes
 <a name="SupportedCubes"/>
+
+## Supported Cubes
 
 Currently this project supports a 4x4x4 LED cube.
 
-## Download and Tools
 <a name="DownloadTools"/>
 
-### Code
+## Download and Tools
+
 <a name="Code"/>
+
+### Code
 
 The code can be downloaded from [Releases](https://github.com/mariugul/LED-Cube-Code/releases) or simply fork or download the repository.
 
-### Tools
 <a name="Tools"/>
+
+### Tools
 
 **[Arduino IDE](https://www.arduino.cc/en/main/software)**
 
 **[Atmel Studio](https://www.microchip.com/mplab/avr-support/atmel-studio-7)**
 
-## Help and Contributing
 <a name="HelpContributing"/>
+
+## Help and Contributing
 
 Check out the [Discord](https://discord.com/invite/ZgxjkC2) server if you need help with the code not working or if you have suggestions for improvement! The [YouTube]() channel has video tutorials to help out as well. (YouTube videos coming soon)
 
-## Previous Version
 <a name="PreviousVersion"/>
+
+## Previous Version
 
 The first version of the LED cube code was written entirely on Arduino. This code uses lots of nested `for()` and `while()` loops as well as `delay()`. It's simple and it works. The code, corresponding code generator and instructions can be found at [Instructables](https://www.instructables.com/id/LED-CUBE-CODE-4x4x4-Arduino/) <img src="https://logodix.com/logo/1584749.png" alt="" width="15"/> for anyone interested. Who wrote the Arduino code is not known to me, however I made the code generator application which is now deprecated to the newer [Cube 3D](https://github.com/mariugul/cube-3d).    
 
-## License
 <a name="License"/>
+
+## License
 
 This project is licensed under the MIT license and is open source. You are free to use this project as you wish as long as you credit the work. See the [LICENSE](LICENSE) file for details. I would highly appreciate if you contributed to the project that you share it so this can be a big open source project!
 
-## Authors
 <a name="Authors"/>
+
+## Authors
 
 <img src="https://lh3.googleusercontent.com/fqYJHtyzZzA4vacRzeJoB93QNvA5-mvR-8UB5oVLxdYDSTpfLp_KgYD4IqVGJUgFEJo" alt="" width="15"/> [Marius C. K. Gulbrandsen](https://www.linkedin.com/in/marius-c-k-gulbrandsen-963a69130/) 
