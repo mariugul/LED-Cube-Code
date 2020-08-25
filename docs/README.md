@@ -52,7 +52,7 @@ const PROGMEM uint16_t pattern_table[] = {
 ```
 
 
-The array is defined as an `uint16_t`, meaning it stores 16 bit unsigned variables. This is to optimize the memory usage. Inside the array there are 5 variables on each code line. The first four of them are written in hexadecimal `0xFFFF`, these represent 16 LEDs and one plane. Hexadecimal representation is merely for compact code. The last variable `250` is represented in decimal because it represents the time in milliseconds that the particular codeline should be displayed for, and this makes more sense in decimal rather than hexadecimal. When the code is compiled, it's compiled down to binary anyway, so it doesn't matter wether you write in decimal, hex or binary. To the computer it's still the same.
+The array is defined as an `uint16_t`, meaning it stores 16 bit unsigned variables. This is to optimize the memory usage. Inside the array there are 5 variables on each code line. The first four of them are written in hexadecimal `0xFFFF`, these represent 16 LEDs and one plane. Hexadecimal representation is merely for compact code. The last variable `250` is represented in decimal because it represents the time in milliseconds that the particular codeline should be displayed for. This makes more sense in decimal rather than hexadecimal. When the code is compiled, it's compiled down to binary anyway, so it doesn't matter wether you write in decimal, hex or binary. To the computer it's still the same.
 ```c
 //plane1  plane2  plane3  plane4  display time [ms]
   0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 250,
