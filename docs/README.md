@@ -147,7 +147,7 @@ if (current_plane == NR_OF_PLANES - 1)
 else
     current_plane++; // Increment to calculate ports for the next plane
 ```
-The variable `time_counter` is incremented every time all 4 planes have been activated, this means every fourth iteration of the `while()` loop. Therefore, it counts every time one pattern line has been run once. How ofter the ISR activates is set with the `OCR1A` register and this has to be an integer. The prescaler is set to 1024 for the most resolution. The `OCR1A` is set to the value `39`, which together with a 1024 prescaler gives ~2.5ms interrupts. The cube then runs on 50Hz, quick enough to give the illusion of persistence of light. However, it means the time variable in the pattern table has to be in increments of 10 to give _accurate patterns_. 
+The variable `time_counter` is incremented every time all 4 planes have been activated, this means every fourth iteration of the `while()` loop. Therefore, it counts every time one pattern line has been run once. How often the ISR activates is set with the `OCR1A` register and this has to be an integer. The prescaler is set to 1024 for the most resolution. The `OCR1A` is set to the value `39`, which together with a 1024 prescaler gives ~2.5ms interrupts. The cube then runs on 50Hz, quick enough to give the illusion of persistence of light. However, it means the time variable in the pattern table has to be in increments of 10 to give _accurate patterns_. 
 
 ## Upload Code
 ### Arduino <img src="https://cdn.iconscout.com/icon/free/png-512/arduino-4-569256.png" alt="" width="30"/>
