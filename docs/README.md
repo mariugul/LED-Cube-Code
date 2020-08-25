@@ -195,10 +195,12 @@ If you don't have an Arduino board, you will need a programmer like an [Atmel IC
 
 ## Supported Cubes
 <a name="SupportedCubes"/>
+
 Currently this project supports a 4x4x4 LED cube.
 
 ## Download and Tools
 <a name="DownloadTools"/>
+
 ### Code
 The code can be downloaded from [Releases](https://github.com/mariugul/LED-Cube-Code/releases) or simply fork or download the repository.
 
@@ -209,16 +211,20 @@ The code can be downloaded from [Releases](https://github.com/mariugul/LED-Cube-
 
 ## Help and Contributing
 <a name="HelpContributing"/>
+
 Check out the [Discord](https://discord.com/invite/ZgxjkC2) server if you need help with the code not working or if you have suggestions for improvement! The [YouTube]() channel has video tutorials to help out as well. (YouTube videos coming soon)
 
 ## Previous Version
 <a name="PreviousVersion"/>
+
 The first version of the LED cube code was written entirely on Arduino. This code uses lots of nested `for()` and `while()` loops as well as `delay()`. It's simple and it works. The code, corresponding code generator and instructions can be found at [Instructables](https://www.instructables.com/id/LED-CUBE-CODE-4x4x4-Arduino/) <img src="https://logodix.com/logo/1584749.png" alt="" width="15"/> for anyone interested. Who wrote the Arduino code is not known to me, however I made the code generator application which is now deprecated to the newer [Cube 3D](https://github.com/mariugul/cube-3d).    
 
 ## License
 <a name="License"/>
+
 This project is licensed under the MIT license and is open source. You are free to use this project as you wish as long as you credit the work. See the [LICENSE](LICENSE) file for details. I would highly appreciate if you contributed to the project that you share it so this can be a big open source project!
 
 ## Authors
 <a name="Authors"/>
+
 <img src="https://lh3.googleusercontent.com/fqYJHtyzZzA4vacRzeJoB93QNvA5-mvR-8UB5oVLxdYDSTpfLp_KgYD4IqVGJUgFEJo" alt="" width="15"/> [Marius C. K. Gulbrandsen](https://www.linkedin.com/in/marius-c-k-gulbrandsen-963a69130/) 
