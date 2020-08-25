@@ -29,14 +29,19 @@ This project contains the code for a LED cube, using an Arduino board or the Atm
 
 ## Difference between Arduino and Atmega328?
 <a name="ArduinoAtmega328"/>
+
 The Arduino board is constructed with the microchip Atmega328. However, to program the chip on an Arduino board, one usually programs it with the Arduino IDE using the Arduino framework. This _can_ be limiting, because the Arduino framework is an abstraction layer that causes the Atmega328 to run slower than its potential. In a LED cube, speed is very important, as well as memory for the light patterns. These reasons led the motivation to write the code in **C** rather than to use Arduino's **C++** framework. This gave a better and more efficient code. However, the code is **fully compatible** with the Arduino board and can be uploaded with the Arduino IDE. The project was based on using the bootloader inside the Arduino board to upload the code. However, it's entirely possible with little to no effort to upload the code to a standalone Atmega328, using Atmel Studio, if you don't wish to use an Arduino.
 
 ## Arduino Framwork?
+<a name="ArduinoFramework"/>
+
 When programming Arduino, to control the Input/Output (IO) pins, one uses `digitalWrite(HIGH)` and `digitalWrite(LOW)`. These functions are part of the Arduino class, which is fundamentally a **C++** class. While convenient, `digitalWrite()` is 15 to 30 times slower than manipulating the IO pins directly in **C** as intended by Atmel. This is done by bitshifting e.g. `PORTB0 |= (1 << PIN0)`. The second part of the Arduino framework issues has to do with interrupts. Arduino uses its own `millis()` function to keep track of time. For this to work, an interrupt routine has to run in the background, even if you do not utilize `delay()` or interrupts in your code. This disturbs the timing and contributes to a less efficient LED cube.
 
 For the reasons above and because the sole purpose of a LED cube is to quickly turn IO pins on/off, the Arduino framework was not used in order to produce a more efficient and accurate LED cube.
 
 ## Arduino vs Atmel Studio
+<a name="ArduinoVSAtmel"/>
+
 And IDE is an Integrated Developement Environment, meaning it's essentially a code editor with programming capabilities and usually some debug capabilities. 
 
 ### Arduino IDE
@@ -49,10 +54,16 @@ This is Atmel's own IDE created for development on their chips, like the Atmega3
 So to summarize the differences. If you just want to upload the code and make it work, I would suggest sticking with the Arduino IDE. It's not necessary to write any code as it's already done, except for the pattern.h file to generate LED patterns. However, I highly recommend using the [Cube 3D](https://github.com/mariugul/cube-3d) software to generate this file. If you however wish to write some code yourself and want to get more into embedded development, I advice on checking out Atmel Studio.
 
 ## Wiring the Cube
+<a name="WiringCube"/>
+
 TODO: image/schematic and or explanation of wiring.
 
 ## Code
+<a name="Code"/>
+
 ### Pattern File
+<a name="PatternFile"/>
+
 To generate a light show on the LED cube you only need to edit the file `pattern.h`. This is simply a header file `.h` with an array containing the patterns. The default file looks like below and turns all LEDs on and off at a 250ms interval.
 ```c
 #ifndef __PATTERN_H__
@@ -87,6 +98,8 @@ If the hex value `0xFFFF` is converted to binary it would be `1111 1111 1111 111
 While you can write this pattern file yourself, I have created a 3D animated tool that does this for you [Cube 3D](https://github.com/mariugul/cube-3d). I highly suggest using that when generating patterns as it's very time effective and it's easy to visualize what you want. Understanding what goes on behind the curtains is of course always useful. Especially if you encounter any problems and need to debug.
 
 ### Main Code
+<a name="MainCode"/>
+
 This section is meant to be purely informative on how the code works. It's not necessary to make the LED cube work but rather to provide insight into the code for those interested.
 #### The Concept
 The fundamental concept of the LED cube is that it's divided into planes and columns. This is a [multiplexing](https://en.wikipedia.org/wiki/Multiplexing?oldformat=true) method for reducing the amount of IO pins necessary. With a 4x4x4 cube that means 20 IO pins, where 4 of them ground each plane and 16 of them supply power to the columns. The code is constructed in the way that only _one_ plane can be on at a time. This in turn means that every plane needs to be switched on and off at a time interval, giving the illusion that the LEDs on different planes are lit.
@@ -169,7 +182,11 @@ else
 The variable `time_counter` is incremented every time all 4 planes have been activated, this means every fourth iteration of the `while()` loop. Therefore, it counts every time one pattern line has been run once. How often the ISR activates is set with the `OCR1A` register and this has to be an integer. The prescaler is set to 1024 for the most resolution. The `OCR1A` is set to the value `39`, which together with a 1024 prescaler gives ~2.5ms interrupts. The cube then runs on 50Hz, quick enough to give the illusion of persistence of light. However, it means the time variable in the pattern table has to be in increments of 10 to give _accurate patterns_. 
 
 ## Upload Code
+<a name="UploadCode"/>
+
 ### Arduino <img src="https://cdn.iconscout.com/icon/free/png-512/arduino-4-569256.png" alt="" width="30"/>
+<a name="Arduino"/>
+
 To use the Arduino IDE, read on.
 
 #### Development Board
@@ -184,6 +201,7 @@ The Arduino board has another advantage, the Atmega328 on it comes with a bootlo
 * Build and upload code.
 
 ### Atmel Studio <img src="https://www.it.unlv.edu/sites/default/files/styles/250_width/public/sites/default/files/assets/software/icons/atmel_studio.png?itok=Y_BrK5R2" alt="" width="20"/>
+<a name="AtmelStudio"/>
 To use Atmel Studio with or without an Arduino board, read on.
 
 #### Arduino Board
@@ -202,9 +220,13 @@ Currently this project supports a 4x4x4 LED cube.
 <a name="DownloadTools"/>
 
 ### Code
+<a name="Code"/>
+
 The code can be downloaded from [Releases](https://github.com/mariugul/LED-Cube-Code/releases) or simply fork or download the repository.
 
 ### Tools
+<a name="Tools"/>
+
 **[Arduino IDE](https://www.arduino.cc/en/main/software)**
 
 **[Atmel Studio](https://www.microchip.com/mplab/avr-support/atmel-studio-7)**
