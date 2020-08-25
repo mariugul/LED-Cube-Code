@@ -122,7 +122,7 @@ The code concists of a `main.c` and `pattern.h`. In `main.c` an interrupt routin
 #### Arduino Uno Pinout
 The Atmega328 is an 8-bit microcontroller and only has 8-bit registers. Therefore it cannot switch more than 8 IO pins in one instruction. We need 20 IO pins and it's therefore necessary to set three ports which each has 8 pins accessible. The image below shows how the Arduino pins map to the ports `PORTB`, `PORTC` and `PORTD`.
 
-<img src="https://content.arduino.cc/assets/Pinout-UNOrev3_latest.png" alt="" width=""/>
+<img src="https://content.arduino.cc/assets/Pinout-UNOrev3_latest.png" alt="" width="500"/>
 
 #### Interrupt Service Routine
 To switch the planes on and off an Interrupt Service Routine (ISR) is used. The ISR merely switches on and off the LEDs from a pre-calculated value that happens in the while loop. This is to reduce the amount of time spent in the ISR. 
