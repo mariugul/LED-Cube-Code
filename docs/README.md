@@ -65,10 +65,15 @@ If the hex value `0xFFFF` is converted to binary it would be `1111 1111 1111 111
 While you can write this pattern file yourself, I have created a 3D animated tool that does this for you [Cube 3D](https://github.com/mariugul/cube-3d). I highly suggest using that when generating patterns as it's very time effective and it's easy to visualize what you want. Understanding what goes on behind the curtains is of course always useful. Especially if you encounter any problems and need to debug.
 
 ### Main Code
+This section is meant to be purely informative on how the code works. It's not necessary to make the LED cube work but rather to provide insight into the code for those interested.
 #### The Concept
 The fundamental concept of the LED cube is that it's divided into planes and columns. This is a [multiplexing](https://en.wikipedia.org/wiki/Multiplexing?oldformat=true) method for reducing the amount of IO pins necessary. With a 4x4x4 cube that means 20 IO pins, where 4 of them ground each plane and 16 of them supply power to the columns. The code is constructed in the way that only _one_ single plane can be on at a time. This in turn means that every plane needs to be switched on and off at a time interval, giving the illusion that the LEDs on different planes are lit.
 
 #### Interrupt Service Routine
+The Atmega328 is an 8-bit microcontroller and only has 8-bit registers. Therefore it cannot switch more than 8 IO pins in one instruction. We need 20 IO pins and it's therefore necessary to set three ports which each has 8 pins accessible. The image below shows how the Arduino pins map to the ports `PORTB`, `PORTC` and `PORTD`.
+
+<img src="https://content.arduino.cc/assets/Pinout-UNOrev3_latest.png" alt="" width=""/>
+
 To switch the planes on and off an Interrupt Service Routine (ISR) is used. The ISR merely switches on and off the LEDs from a pre-calculated value that happens in the while loop. This is to reduce the amount of time spent in the ISR.
 
 ```c
@@ -81,9 +86,33 @@ ISR (TIMER1_COMPA_vect)
 	PORTC = port_c; // Port C is last because it turns on the plane also
 }
 ```
-Because the Atmega328 is an 8-bit microcontroller, it only has 8-bit registers. Therefore it cannot switch more than 8 IO pins in one instruction. Because we need 20 IO pins it becomes necessary to set three ports which each has 8 pins accessible.
 
-<img src="https://content.arduino.cc/assets/Pinout-UNOrev3_latest.png" alt="" width=""/>
+As shown in the code above `PORTB` is set to be the value of `port_b` in the ISR. `PORTB` is a avr-library variable for setting the ports and `port_b` is calculated in the while-loop from the pattern table. Only when a plane and a column (or several columns) are on at the same time will a LED light up. Because `PORTC` contains IO pins that goes to both columns and planes, it comes last so the power is turned on in that instant all at once.
+
+#### Calculation of Port Values
+The code below is how the actual calculation of the port values are done. This is the value that sets the correct IO pins to high and low. 
+```c
+// Calculate port values
+port_b =  (pattern_buf[current_plane] & PORT_B_MASK) >> SHIFT_PORT_B; 
+
+port_c = ((pattern_buf[current_plane] & PORT_C_MASK) >> SHIFT_PORT_C) ^ PLANE_MASK[current_plane]; // XOR to find the current PLANE to turn on
+
+port_d =  (pattern_buf[current_plane] & PORT_D_MASK); // Don't need a shift 
+```
+The `pattern_buf[current_plane]` is an array holding one pattern line from the pattern table. It loads upon start and when the current pattern is finished displaying. The `current_plane` makes sure only one plane is selected at a time. The array will then return a hex value e.g. `0xFFFF`. The `PORT_B_MASK` variable merely filters out the IO pins that we are not using. It's returning the value `0x3F00` which is binary `0011 1111 0000 0000`. This gives us 5 IO pins in the place of the `1`'s which will eventually be `PB0`, `PB1`, `PB2`, `PB3`, `PB4` and `PB5`. Looking at the Arduino Uno Pinout that's the pins 8 to 13. Thus far, the calculation of `port_b` is: 
+```c
+0xFFFF & 0x3F00 >> SHIFT_PORT_B = 0x3F00 >> SHIFT_PORT_B
+```
+If we now look at the value `0x3F00` it didn't change because when &'ed with `0xFFFF` it's the same value. Remember that in binary `0x3F00` is `0011 1111 0000 0000`. We want to set the first 6 IO pins, hence the reason we used the `0x3F00` mask in the first place. That's why we need to shift these values to the right into `PB0` to `PB5`. Thus, `SHIFT_PORT_B` is simply the value 8 giving:
+
+```c
+0x3F00 >> 8 = 0011 1111 0000 00000 >> 8 = 0000 0000 0011 1111
+```
+You can now see how the first 6 values of this number will equate to `PB0` through `PB5`.
+
+For `PORTC` and `PORTD` the idea is exactly the same. However for `PORTD` we don't need a right shift because the values are already in the right place due to the `PORT_D_MASK`. This is merely because we needed those pins on the Arduino board and this is how it was mapped. Otherwise `PORTD` calculation is exactly the same as `PORTB`. 
+
+The calculation of `PORTC` is the same with one additional parameter, it has a XOR at the end. Remember that `PORTC` contains IO pins for planes and for columns? Due to this fact, we need to calculate which plane is currently going to be displayed and make that IO pin a `1`. That's the functionality of the `^` XOR operation at the end.
 
 ## Upload Code
 ### Arduino <img src="https://cdn.iconscout.com/icon/free/png-512/arduino-4-569256.png" alt="" width="30"/>
