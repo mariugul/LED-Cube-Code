@@ -60,8 +60,7 @@ So to summarize the differences. If you just want to upload the code and make it
 
 ## Wiring the Cube
 
-TODO: image/schematic and or explanation of wiring.
-
+<img src="numbering.png" alt="" width="425"/> <img src="planes.png" alt="" width="350"/> 
 <a name="Code"/>
 
 ## Code
