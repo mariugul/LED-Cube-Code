@@ -62,7 +62,7 @@ The code can be downloaded from [Releases](https://github.com/mariugul/LED-Cube-
 **[Atmel Studio](https://www.microchip.com/mplab/avr-support/atmel-studio-7)**
 
 ## Code Details
-How does the code work? If you are interested in how the code actually works, check out the WIKI? YouTube videos? TODO: Figure out this section.
+TODO: Figure out this section.
 
 
 ## Help and Contributing
