@@ -1,5 +1,5 @@
 # LED Cube Code for Arduino or Atmega328
-[![Release badge](https://img.shields.io/github/v/release/mariugul/LED-Cube-Code](https://github.com/mariugul/LED-Cube-Code/releases)
+[![Release badge](https://img.shields.io/github/v/release/mariugul/LED-Cube-Code)](https://github.com/mariugul/LED-Cube-Code/releases)
 [![Discord badge](https://img.shields.io/discord/710895026435260556)](https://discord.com/invite/ZgxjkC2)
 [![GitHub last commit](https://img.shields.io/github/last-commit/mariugul/LED-Cube-Code)](https://github.com/mariugul/LED-Cube-Code/commits/master)
 [![GitHub issues](https://img.shields.io/github/issues/mariugul/LED-Cube-Code)](https://github.com/mariugul/LED-Cube-Code/issues)
